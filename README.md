@@ -1,4 +1,4 @@
-# NEXUS
+# NEXUS `Native Execution & eXtensible Unified System`
 ## “A native local system that connects files, execution, terminal, and web.”
 
 > Created by **Jatin Sharma**  
