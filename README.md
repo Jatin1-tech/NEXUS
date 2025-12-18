@@ -149,3 +149,9 @@ gcc main.c mongoose.c -o file_manager -pthread -DENABLE_WEB_SERVER
 gcc main.c mongoose.c -o file_manager
 ```
 
+## Run
+
+After building the project, start NEXUS using:
+
+```bash
+./file_manager
