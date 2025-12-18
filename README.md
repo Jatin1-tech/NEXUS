@@ -1,4 +1,5 @@
-# Native Local File Manager & Code Execution Environment
+# NEXUS
+## “A native local system that connects files, execution, terminal, and web.”
 
 > Created by **Jatin Sharma**  
 > Status: 🚧 Development Underway  
