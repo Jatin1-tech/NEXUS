@@ -78,6 +78,12 @@
 - **Ruby, PHP, Perl, Lua, R** - for respective scripts
 
 ---
+> ⚠️ **Under Active Development**
+>
+> NEXUS is currently under active development.
+> Some features may be incomplete, unstable, or temporarily unavailable.
+> Expect breaking changes as the system evolves.
+---
 
 ## 🔧 Installation
 
