@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Advanced File Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="nexus-logo">
+                    <svg width="50" height="50" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="nexusGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea"/>
+                                <stop offset="100%" style="stop-color:#764ba2"/>
+                            </linearGradient>
+                            <linearGradient id="nexusGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#4F46E5"/>
+                                <stop offset="100%" style="stop-color:#06B6D4"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Upper arc -->
+                        <path d="M 15 50 Q 50 15, 85 50" stroke="url(#nexusGradient1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        <circle cx="85" cy="50" r="3" fill="#06B6D4"/>
+                        <!-- Lower arc -->
+                        <path d="M 85 50 Q 50 85, 15 50" stroke="url(#nexusGradient2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        <circle cx="15" cy="50" r="3" fill="#4F46E5"/>
+                        <!-- Center dot -->
+                        <circle cx="50" cy="50" r="4" fill="#667eea"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h2>NEXUS</h2>
+                    <span class="logo-subtitle">File Manager</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-section="files">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/>
+                    </svg>
+                    <span>My Files</span>
+                </a>
+                <a href="#" class="nav-item" data-section="recent">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/>
+                    </svg>
+                    <span>Recent</span>
+                </a>
+                <a href="#" class="nav-item" data-section="code">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"/>
+                    </svg>
+                    <span>Code Files</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="storage-info">
+                    <div class="storage-label">Storage Used</div>
+                    <div class="storage-bar">
+                        <div class="storage-fill" style="width: 45%"></div>
+                    </div>
+                    <div class="storage-text">45% of 100GB</div>
+                </div>
+                <div class="nexus-brand">
+                    <span>Powered by NEXUS</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"/>
+                    </svg>
+                    <input type="text" placeholder="Search files..." id="searchInput">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="locationBtn" title="Set Default Location">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+                        </svg>
+                    </button>
+                    <button class="icon-btn" id="notificationBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                        </svg>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="btn-primary" id="createFileBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
+                        </svg>
+                        Create New File
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalFiles">0</div>
+                            <div class="stat-label">Total Files</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="codeFiles">0</div>
+                            <div class="stat-label">Code Files</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="recentFiles">0</div>
+                            <div class="stat-label">Recent Activity</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File List -->
+                <div class="file-section">
+                    <div class="section-header">
+                        <h3>Your Files</h3>
+                        <div class="view-options">
+                            <button class="view-btn active" data-view="grid">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
+                                    <rect x="1" y="1" width="6" height="6" rx="1"/>
+                                    <rect x="11" y="1" width="6" height="6" rx="1"/>
+                                    <rect x="1" y="11" width="6" height="6" rx="1"/>
+                                    <rect x="11" y="11" width="6" height="6" rx="1"/>
+                                </svg>
+                            </button>
+                            <button class="view-btn" data-view="list">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
+                                    <rect x="1" y="2" width="16" height="2" rx="1"/>
+                                    <rect x="1" y="8" width="16" height="2" rx="1"/>
+                                    <rect x="1" y="14" width="16" height="2" rx="1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="file-grid" id="fileGrid">
+                        <!-- Files will be loaded here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Create File Modal -->
+    <div class="modal" id="createModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New File</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>File Name</label>
+                    <input type="text" id="newFileName" placeholder="example.txt" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>File Location</label>
+                    <div class="location-input">
+                        <input type="text" id="fileLocation" placeholder="/home/user/documents" class="form-input" readonly>
+                        <button class="btn-secondary" id="browseLocation">Browse</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea id="newFileContent" placeholder="Enter file content..." class="form-textarea"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelCreate">Cancel</button>
+                <button class="btn-primary" id="confirmCreate">Create File</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit File Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>Edit: <span id="editFileName"></span></h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="editFileContent" class="form-textarea code-editor"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelEdit">Cancel</button>
+                <button class="btn-primary" id="saveEdit">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View File Modal -->
+    <div class="modal" id="viewModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>View: <span id="viewFileName"></span></h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre id="viewFileContent" class="code-preview"></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="closeView">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Execution Modal -->
+    <div class="modal" id="executeModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>Execute: <span id="executeFileName"></span></h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="execution-options">
+                    <button class="btn-primary" id="compileBtn">Compile</button>
+                    <button class="btn-primary" id="runBtn">Run</button>
+                    <button class="btn-primary" id="compileRunBtn">Compile & Run</button>
+                </div>
+                <div class="output-container">
+                    <h4>Output:</h4>
+                    <pre id="executionOutput" class="execution-output"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="closeExecute">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Browser Modal -->
+    <div class="modal" id="locationModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Select Location</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="location-browser">
+                    <div class="breadcrumb" id="breadcrumb"></div>
+                    <div class="directory-list" id="directoryList"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelLocation">Cancel</button>
+                <button class="btn-primary" id="selectLocation">Select</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overwrite Confirmation Modal -->
+    <div class="modal" id="overwriteModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h2>⚠️ File Exists</h2>
+            </div>
+            <div class="modal-body">
+                <p>A file with this name already exists. Do you want to overwrite it?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelOverwrite">Cancel</button>
+                <button class="btn-danger" id="confirmOverwrite">Overwrite</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
